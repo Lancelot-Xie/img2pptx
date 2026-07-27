@@ -1,0 +1,4 @@
+interface:
+  display_name: "Image to Editable PPTX"
+  short_description: "Rebuild raster references as editable audited PPTX slides"
+  default_prompt: "Use $img2pptx to reconstruct this reference image as an editable, modular, audited one-slide PPTX."
