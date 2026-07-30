@@ -20,7 +20,6 @@ It was supplied as a PDF and reconstructed as an editable SVG.
 
 ```text
 Use $img2pptx to reconstruct methodv3.pdf as a one-slide editable PPTX.
-Preserve the layout, text, colors, arrows, scientific symbols, and visual hierarchy.
 ```
 
 ### Original reference
