@@ -69,6 +69,39 @@ Preserve the original aspect ratio, text, colors, arrows, and scientific symbols
 The skill may also trigger automatically when a request clearly asks to convert,
 rebuild, trace, or vectorize a raster reference into an editable PowerPoint slide.
 
+## Example: research figure reconstruction
+
+The source below is a method figure from
+[Revisiting Uncertainty: On Evidential Learning for Partially Relevant Video Retrieval](https://arxiv.org/abs/2605.06083).
+It was supplied as a PDF and reconstructed as an editable SVG.
+
+```text
+Use $img2pptx to reconstruct methodv3.pdf as a one-slide editable PPTX.
+Preserve the layout, text, colors, arrows, scientific symbols, and visual hierarchy.
+```
+
+### Original reference
+
+<p align="center">
+  <img src="docs/assets/methodv3-original-preview.svg"
+       alt="Original research method figure supplied as a PDF"
+       width="100%">
+</p>
+
+### Editable reconstruction
+
+<p align="center">
+  <a href="docs/assets/methodv3-reconstructed.svg">
+    <img src="docs/assets/methodv3-reconstructed.svg"
+         alt="Editable SVG reconstruction produced with img2pptx"
+         width="100%">
+  </a>
+</p>
+
+Click the reconstructed preview to open the full-resolution SVG. This example is
+built from editable SVG text and vector primitives and contains no embedded
+`<image>` elements. In a complete run, the SVG is embedded into `final.pptx`.
+
 ## What it produces
 
 The main deliverable is `final.pptx`. A complete run also produces:
@@ -122,6 +155,10 @@ Use only images you have permission to reproduce.
 ## Repository layout
 
 ```text
+docs/assets/
+├── methodv3-original-preview.svg
+└── methodv3-reconstructed.svg
+
 skills/img2pptx/
 ├── SKILL.md
 ├── agents/
@@ -133,13 +170,10 @@ skills/img2pptx/
 
 ## Status
 
-This is an early open-source release. Real-world examples and regression tests
-will be added as the workflow is tested across more diagram styles and runtime
-environments.
+This is an early open-source release. More real-world examples and regression
+tests will be added as the workflow is tested across additional diagram styles
+and runtime environments.
 
 ## License
 
 Apache License 2.0. See [LICENSE](LICENSE).
-
-# img2pptx
-Turn AI-generated diagrams and raster references into editable, modular, audited PPTX slides.
