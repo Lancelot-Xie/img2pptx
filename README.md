@@ -1,82 +1,84 @@
 # img2pptx
 
-One instruction is enough: Codex turns a polished diagram generated with
-GPT Image 2 into a PPTX; open it in PowerPoint and use **Ungroup** or
-**Convert to Shape** to edit the reconstructed elements.
+<p align="center">
+  <strong>简体中文</strong> | <a href="README.en.md">English</a>
+</p>
+
+只需要一句指令，就能让 Codex 把 GPT Image 2 生成的美观图片转换为 PPTX；然后在
+PowerPoint 中选择**取消组合**或**转换为形状**，即可编辑重建后的各个元素。
 
 ```text
-Use $img2pptx to turn this image into an editable PPTX.
+使用 $img2pptx，把这张图片转为可编辑的 PPTX。
 ```
 
-## Example: research figure reconstruction
+## 示例：重建科研论文插图
 
-The source below is a method figure from
-[Revisiting Uncertainty: On Evidential Learning for Partially Relevant Video Retrieval](https://arxiv.org/abs/2605.06083).
-It was supplied as a PDF and reconstructed as an editable SVG.
+下面的原图来自论文
+[Revisiting Uncertainty: On Evidential Learning for Partially Relevant Video Retrieval](https://arxiv.org/abs/2605.06083)
+中的方法图。输入文件为 PDF，随后被重建为可编辑的 SVG。
 
 ```text
-Use $img2pptx to reconstruct methodv3.pdf as a one-slide editable PPTX.
-Preserve the layout, text, colors, arrows, scientific symbols, and visual hierarchy.
+使用 $img2pptx，把 methodv3.pdf 重建为单页可编辑 PPTX。
+保留原始布局、文字、颜色、箭头、科学符号和视觉层级。
 ```
 
-### Original reference
+### 原始参考图
 
 <p align="center">
   <img src="docs/assets/methodv3-original-preview.svg"
-       alt="Original research method figure supplied as a PDF"
+       alt="以 PDF 形式提供的原始科研方法图"
        width="100%">
 </p>
 
-### Editable reconstruction
+### 可编辑重建结果
 
 <p align="center">
   <a href="docs/assets/methodv3-reconstructed.svg">
     <img src="docs/assets/methodv3-reconstructed.svg"
-         alt="Editable SVG reconstruction produced with img2pptx"
+         alt="使用 img2pptx 生成的可编辑 SVG 重建结果"
          width="100%">
   </a>
 </p>
 
-Click the reconstructed preview to open the full-resolution SVG. This example is
-built from editable SVG text and vector primitives and contains no embedded
-`<image>` elements. In a complete run, the SVG is embedded into `final.pptx`.
+点击重建结果即可打开完整分辨率的 SVG。这个示例由可编辑的 SVG 文字和矢量图元
+构成，不包含嵌入式 `<image>` 元素。在一次完整运行中，这份 SVG 会被嵌入
+`final.pptx`。
 
-## Install
+## 安装
 
-### Recommended: install from GitHub
+### 推荐：从 GitHub 安装
 
-In Codex, invoke `$skill-installer` and provide this repository path:
-
-```text
-$skill-installer Install this skill from:
-https://github.com/Lancelot-Xie/img2pptx/tree/main/skills/img2pptx
-```
-
-中文安装提示：
+在 Codex 中调用 `$skill-installer`，并提供本仓库中的 Skill 路径：
 
 ```text
 $skill-installer 请从 GitHub 安装这个 skill：
 https://github.com/Lancelot-Xie/img2pptx/tree/main/skills/img2pptx
 ```
 
-Codex detects newly installed skills automatically. If it does not appear,
-restart Codex or start a new task.
+英文安装指令：
 
-### Manual installation
+```text
+$skill-installer Install this skill from:
+https://github.com/Lancelot-Xie/img2pptx/tree/main/skills/img2pptx
+```
 
-For a personal skill, copy `skills/img2pptx` to:
+Codex 会自动识别新安装的 Skill。如果没有显示，请重启 Codex 或新建一个任务。
+
+### 手动安装
+
+作为个人 Skill 使用时，将 `skills/img2pptx` 复制到：
 
 ```text
 ~/.agents/skills/img2pptx
 ```
 
-For a repository-scoped skill, copy it to:
+作为仓库级 Skill 使用时，将它复制到：
 
 ```text
 YOUR_REPOSITORY/.agents/skills/img2pptx
 ```
 
-## More usage examples
+## 更多使用示例
 
 中文：
 
@@ -84,67 +86,66 @@ YOUR_REPOSITORY/.agents/skills/img2pptx
 使用 $img2pptx，把这张图片转为可编辑的 PPTX。
 ```
 
-For more control:
+需要更精确地控制重建结果时：
 
 ```text
 Use $img2pptx to reconstruct diagram.png as a one-slide editable PPTX.
 Preserve the original aspect ratio, text, colors, arrows, and scientific symbols.
 ```
 
-The skill may also trigger automatically when a request clearly asks to convert,
-rebuild, trace, or vectorize a raster reference into an editable PowerPoint slide.
+当请求中明确要求把栅格参考图转换、重建、描摹或矢量化为可编辑的 PowerPoint
+幻灯片时，这个 Skill 也可能自动触发。
 
-## What it produces
+## 输出内容
 
-The main deliverable is `final.pptx`. A complete run also produces:
+主要交付物是 `final.pptx`。一次完整运行还会生成：
 
-- `full.svg` — the full vector reconstruction embedded in the PPTX;
-- `component_manifest.json` — semantic components, hierarchy, geometry, and constraints;
-- `modules/*.svg` — independently reusable semantic modules;
-- `qa/*` — layout, containment, border, semantic, visual, and PPTX embedding audits.
+- `full.svg` —— 嵌入 PPTX 的完整矢量重建图；
+- `component_manifest.json` —— 语义组件、层级、几何信息和约束；
+- `modules/*.svg` —— 可独立复用的语义模块；
+- `qa/*` —— 布局、包含关系、边框、语义、视觉和 PPTX 嵌入审计结果。
 
-## Why not just put the image on a slide?
+## 为什么不直接把图片放进幻灯片？
 
-`img2pptx` treats the reference as a reconstruction task rather than a screenshot
-placement task. It aims to preserve:
+`img2pptx` 将输入图视为一个重建任务，而不是简单地把截图放进幻灯片。它致力于
+保留：
 
-- editable SVG text and vector primitives;
-- meaningful nested groups and reusable modules;
-- arrows, containment, sequence, color semantics, and scientific notation;
-- an auditable relationship between the source image, SVG, and PPTX.
+- 可编辑的 SVG 文字和矢量图元；
+- 有意义的嵌套分组和可复用模块；
+- 箭头、包含关系、顺序、颜色语义和科学符号；
+- 原始图片、SVG 与 PPTX 之间可审计的对应关系。
 
-Raster crops are used only when an element cannot be reproduced reliably as a
-vector without losing its visual identity.
+只有当某个元素无法在不丢失其视觉身份的情况下可靠地重建为矢量时，才会使用
+局部栅格裁切。
 
-## Editability and PowerPoint compatibility
+## 可编辑性与 PowerPoint 兼容性
 
-The PPTX contains the complete `full.svg`, not only a full-slide bitmap.
-Recent PowerPoint versions can usually use **Convert to Shape** and **Ungroup**
-on an SVG. Exact text conversion, nested group preservation, and appearance
-depend on the PowerPoint version, operating system, fonts, and SVG importer.
+PPTX 中包含完整的 `full.svg`，而不是只有一张铺满幻灯片的位图。较新的
+PowerPoint 版本通常可以对 SVG 使用**转换为形状**和**取消组合**。文字转换、
+嵌套分组保留情况和最终外观会受到 PowerPoint 版本、操作系统、字体及 SVG
+导入器的影响。
 
-The skill reports these separately:
+Skill 会分别报告：
 
-1. whether the complete SVG is embedded;
-2. whether the SVG is structurally ready for conversion;
-3. whether an actual PowerPoint conversion was tested.
+1. 是否完整嵌入 SVG；
+2. SVG 的结构是否已经做好转换准备；
+3. 是否实际执行并检查了 PowerPoint 转换。
 
-It does not claim perfect post-conversion fidelity unless that conversion was
-actually performed and inspected.
+除非已经实际完成并检查转换，否则不会声称转换后的结果能够完美保真。
 
-## Supported references
+## 支持的参考图
 
-Common inputs include:
+常见输入包括：
 
-- AI-generated diagrams and infographics;
-- research-paper architecture figures;
-- scientific workflows and symbolic diagrams;
-- flowcharts, process diagrams, and system overviews;
-- screenshots, PNG, JPG/JPEG, and WebP files.
+- AI 生成的图示和信息图；
+- 科研论文中的架构图；
+- 科学工作流和符号图；
+- 流程图、过程图和系统概览图；
+- 截图以及 PNG、JPG/JPEG 和 WebP 文件。
 
-Use only images you have permission to reproduce.
+请只使用你有权重建的图片。
 
-## Repository layout
+## 仓库结构
 
 ```text
 docs/assets/
@@ -160,12 +161,11 @@ skills/img2pptx/
     └── visual-optimization.md
 ```
 
-## Status
+## 项目状态
 
-This is an early open-source release. More real-world examples and regression
-tests will be added as the workflow is tested across additional diagram styles
-and runtime environments.
+这是一个早期开源版本。随着工作流在更多图示风格和运行环境中得到测试，后续会
+继续补充真实案例和回归测试。
 
-## License
+## 许可证
 
-Apache License 2.0. See [LICENSE](LICENSE).
+本项目采用 Apache License 2.0，详见 [LICENSE](LICENSE)。
