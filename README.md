@@ -1,14 +1,45 @@
 # img2pptx
 
-Turn a raster diagram into an editable, modular, and auditable PowerPoint slide.
-
-Create a diagram with GPT Image 2 or another AI image-generation tool, then use
-`img2pptx` to reconstruct the PNG, JPG, WebP, screenshot, scientific figure, or
-architecture diagram as a one-slide PPTX with a complete embedded SVG.
+One instruction is enough: Codex turns a polished diagram generated with
+GPT Image 2 into a PPTX; open it in PowerPoint and use **Ungroup** or
+**Convert to Shape** to edit the reconstructed elements.
 
 ```text
-AI-generated diagram → img2pptx → editable PPTX + SVG + modules + QA
+Use $img2pptx to turn this image into an editable PPTX.
 ```
+
+## Example: research figure reconstruction
+
+The source below is a method figure from
+[Revisiting Uncertainty: On Evidential Learning for Partially Relevant Video Retrieval](https://arxiv.org/abs/2605.06083).
+It was supplied as a PDF and reconstructed as an editable SVG.
+
+```text
+Use $img2pptx to reconstruct methodv3.pdf as a one-slide editable PPTX.
+Preserve the layout, text, colors, arrows, scientific symbols, and visual hierarchy.
+```
+
+### Original reference
+
+<p align="center">
+  <img src="docs/assets/methodv3-original-preview.svg"
+       alt="Original research method figure supplied as a PDF"
+       width="100%">
+</p>
+
+### Editable reconstruction
+
+<p align="center">
+  <a href="docs/assets/methodv3-reconstructed.svg">
+    <img src="docs/assets/methodv3-reconstructed.svg"
+         alt="Editable SVG reconstruction produced with img2pptx"
+         width="100%">
+  </a>
+</p>
+
+Click the reconstructed preview to open the full-resolution SVG. This example is
+built from editable SVG text and vector primitives and contains no embedded
+`<image>` elements. In a complete run, the SVG is embedded into `final.pptx`.
 
 ## Install
 
@@ -45,13 +76,7 @@ For a repository-scoped skill, copy it to:
 YOUR_REPOSITORY/.agents/skills/img2pptx
 ```
 
-## Use
-
-Attach an image and use a short prompt:
-
-```text
-Use $img2pptx to turn this image into an editable PPTX.
-```
+## More usage examples
 
 中文：
 
@@ -59,7 +84,7 @@ Use $img2pptx to turn this image into an editable PPTX.
 使用 $img2pptx，把这张图片转为可编辑的 PPTX。
 ```
 
-You can also be more specific:
+For more control:
 
 ```text
 Use $img2pptx to reconstruct diagram.png as a one-slide editable PPTX.
@@ -68,39 +93,6 @@ Preserve the original aspect ratio, text, colors, arrows, and scientific symbols
 
 The skill may also trigger automatically when a request clearly asks to convert,
 rebuild, trace, or vectorize a raster reference into an editable PowerPoint slide.
-
-## Example: research figure reconstruction
-
-The source below is a method figure from
-[Revisiting Uncertainty: On Evidential Learning for Partially Relevant Video Retrieval](https://arxiv.org/abs/2605.06083).
-It was supplied as a PDF and reconstructed as an editable SVG.
-
-```text
-Use $img2pptx to reconstruct methodv3.pdf as a one-slide editable PPTX.
-Preserve the layout, text, colors, arrows, scientific symbols, and visual hierarchy.
-```
-
-### Original reference
-
-<p align="center">
-  <img src="docs/assets/methodv3-original-preview.svg"
-       alt="Original research method figure supplied as a PDF"
-       width="100%">
-</p>
-
-### Editable reconstruction
-
-<p align="center">
-  <a href="docs/assets/methodv3-reconstructed.svg">
-    <img src="docs/assets/methodv3-reconstructed.svg"
-         alt="Editable SVG reconstruction produced with img2pptx"
-         width="100%">
-  </a>
-</p>
-
-Click the reconstructed preview to open the full-resolution SVG. This example is
-built from editable SVG text and vector primitives and contains no embedded
-`<image>` elements. In a complete run, the SVG is embedded into `final.pptx`.
 
 ## What it produces
 
