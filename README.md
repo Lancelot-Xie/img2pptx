@@ -15,7 +15,7 @@ PowerPoint 中选择**取消组合**或**转换为形状**，即可编辑重建�
 
 下面的原图来自论文
 [Revisiting Uncertainty: On Evidential Learning for Partially Relevant Video Retrieval](https://arxiv.org/abs/2605.06083)
-中的方法图。输入文件为 PDF，随后被重建为可编辑的 SVG。
+中的方法图。输入文件为不可编辑的 PDF，随后被重建为可编辑的 SVG。
 
 ```text
 使用 $img2pptx，把 methodv3.pdf 重建为单页可编辑 PPTX。
