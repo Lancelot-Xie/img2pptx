@@ -6,7 +6,9 @@
 
 One instruction is enough: Codex turns a polished diagram generated with
 GPT Image 2 into a PPTX; open it in PowerPoint and use **Ungroup** or
-**Convert to Shape** to edit the reconstructed elements.
+**Convert to Shape** to edit the reconstructed elements. Note: Editing 
+lower-level elements may require **ungrouping** multiple times, as our 
+reconstruction process uses a multi-level grouping hierarchy.
 
 ```text
 Use $img2pptx to turn this image into an editable PPTX.
