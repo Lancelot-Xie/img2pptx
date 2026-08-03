@@ -96,6 +96,8 @@ For logos, complex icons, molecular structures, small illustrations, and similar
 
 To preserve visual fidelity, recognizable icons, scientific symbols, and small visual motifs from the reference MUST retain their graphical identity and basic appearance. MUST NOT replace them with text, emoji, Unicode characters, a different icon, or a generic placeholder merely for implementation convenience or editability, unless the reference itself uses that representation. Prefer vector redrawing. ONLY when reliable redrawing is not possible and substitution would cause obvious visual distortion may the relevant source crop be preserved as an independent atomic raster image. In that case, record its source region, reason for use, and later replacement status in the manifest.
 
+Every independently identifiable icon or small visual motif MUST be cropped from the normalized source and inspected at increased scale before drawing. After reconstruction, render it independently and compare it with the enlarged source crop side by side and with an overlay or amplified diff. Verify silhouette, internal structure, orientation, stroke weight, color, negative space, and distinguishing features. Apply this even when reusing a vector asset. If the source is too ambiguous, require review and do not invent details.
+
 Do not draw a brand logo from memory. Prefer the shape shown in the input, or use
 a reliable specification-compliant asset.
 
@@ -294,6 +296,7 @@ Check:
 - whether submodules are overcrowded or excessively sparse;
 - consistent border weights;
 - visual-center alignment between icons and text;
+- clear text readability: no opaque shape unintentionally covers text, and no border, arrow, connector, or decorative line passes through readable glyph areas; allow intentional source-faithful cases;
 - absence of doubled or misaligned outlines.
 
 ## 11. Run the Border Layering Audit
@@ -381,6 +384,7 @@ Check:
 - that the PPTX preview matches the rendered SVG;
 - that borders are clear while grouped;
 - that text is neither corrupted nor displaced;
+- that the same text-readability check passes in the rendered PPTX preview, including after any font substitution or displacement;
 - that the content is reasonably prepared for PowerPoint **Convert to Shape**
   or **Ungroup**;
 - that nested groups remain present in the embedded SVG bytes;

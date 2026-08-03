@@ -14,6 +14,11 @@ reconstruction process uses a multi-level grouping hierarchy.
 Use $img2pptx to turn this image into an editable PPTX.
 ```
 
+After reconstruction, if any part is unsatisfactory, simply describe the desired
+change in the conversation and ask Codex to revise it. All vectorized elements
+and their structure are preserved, so the relevant text, shapes, colors, layout,
+or connections can be edited directly without regenerating the entire image.
+
 ## Example: research figure reconstruction
 
 The source below is a method figure from
