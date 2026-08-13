@@ -96,6 +96,10 @@ For logos, complex icons, molecular structures, small illustrations, and similar
 
 To preserve visual fidelity, recognizable icons, scientific symbols, and small visual motifs from the reference MUST retain their graphical identity and basic appearance. MUST NOT replace them with text, emoji, Unicode characters, a different icon, or a generic placeholder merely for implementation convenience or editability, unless the reference itself uses that representation. Prefer vector redrawing. ONLY when reliable redrawing is not possible and substitution would cause obvious visual distortion may the relevant source crop be preserved as an independent atomic raster image. In that case, record its source region, reason for use, and later replacement status in the manifest.
 
+Do not use a source crop to replace any module that can reasonably be reconstructed as editable vector content merely to save drawing effort. Preserve a local raster crop only when the source content is inherently raster or vectorization would materially reduce visual fidelity or information accuracy, and crop only the minimum necessary region.
+
+Do not evade the vector-reconstruction requirement by slicing the source into raster tiles and reassembling them. An allowed raster region MUST NOT unnecessarily include text, borders, arrows, connectors, or other graphics that can reasonably be reconstructed as separate editable vector elements.
+
 Every independently identifiable icon or small visual motif MUST be cropped from the normalized source and inspected at increased scale before drawing. After reconstruction, render it independently and compare it with the enlarged source crop side by side and with an overlay or amplified diff. Verify silhouette, internal structure, orientation, stroke weight, color, negative space, and distinguishing features. Apply this even when reusing a vector asset. If the source is too ambiguous, require review and do not invent details.
 
 Do not draw a brand logo from memory. Prefer the shape shown in the input, or use
